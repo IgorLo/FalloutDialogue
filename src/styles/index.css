@@ -1,3 +1,94 @@
+@font-face {
+    font-family: fallout;
+    src: url(../fonts/monofonto.ttf);
+}
+
 * {
-    background: black;
+    color: #1bff80;
+    font-family: fallout;
+    font-size: 28pt;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(https://static.wikia.nocookie.net/fallout_gamepedia/images/1/19/Fo3_Lucas_Simms.png/revision/latest/scale-to-width-down/1200?cb=20141009104611);
+    /*background: darkgrey;*/
+    /* Full height */
+    height: 100vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+}
+
+.dialogue {
+    position: relative;
+    margin: auto auto 7.5vh;
+    box-sizing: border-box;
+    max-width: 1000px;
+    max-height: 285px;
+    border-width: 2px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom, #1bff80, #00000000 15%, #00000000 85%, #1bff80);
+}
+
+.scroll-wrapper {
+    position: relative;
+    padding: 12px 25px;
+    box-sizing: border-box;
+    max-height: 285px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-wrapper::-webkit-scrollbar-button {
+
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+
+}
+
+.dialogue__option {
+    direction:ltr;
+    user-select: none;
+    padding: 8px 32px;
+    border: 2px solid #00000000;
+}
+
+.dialogue__option:hover {
+    cursor: pointer;
+    background: #1bff8022;
+    border-color: #1bff80;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00000099;
+    filter: blur(20px);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
