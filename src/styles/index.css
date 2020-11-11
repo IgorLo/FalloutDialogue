@@ -76,6 +76,12 @@ body {
     border: 2px solid #00000000;
 }
 
+.dialogue__reply {
+    direction:ltr;
+    user-select: none;
+    padding: 8px 32px;
+}
+
 .dialogue__option:hover {
     cursor: pointer;
     background: #1bff8022;

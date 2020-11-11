@@ -7,16 +7,21 @@
 <body>
 <audio id="sound__focus" src="sounds/ui_menu_focus.wav"></audio>
 <audio id="sound__ok" src="sounds/ui_menu_ok.wav"></audio>
-<div class="wrapper">
+<div id="app" class="wrapper">
     <div class="dialogue">
         <div class="bg"></div>
         <div class="scroll-wrapper">
-            <div class="dialogue__option">Я ищу своего отца. Он тоже из убежища. Не видели такого?</div>
-            <div class="dialogue__option">А это... эм... безопасно жить вокруг бомбы?</div>
-            <div class="dialogue__option">Обалденное местечко, шериф. А рабы у вас здесь продаются?</div>
-            <div class="dialogue__option">[СИЛА] Хватит меня допрашивать, урод, иначе
-                очень скоро мои кулаки будут допрашивать твою морду</div>
-            <div class="dialogue__option">&lt;Промолчать&gt;</div>
+            <div v-if="displayReply" class="dialogue__reply">
+                {{current_option.reply}}
+            </div>
+            <div
+                    v-else
+                    v-for="optionId in current_option.options"
+                    class="dialogue__option"
+                    @click="choose(optionId)"
+                    @mouseover="hover"
+                    @mouseout="onOut"
+            >{{textOfId(optionId)}}</div>
         </div>
     </div>
 </div>
