@@ -7,6 +7,15 @@
 <body>
 <audio id="sound__focus" src="sounds/ui_menu_focus.wav"></audio>
 <audio id="sound__ok" src="sounds/ui_menu_ok.wav"></audio>
+<div id="main-bg" style="background-image: url(pics/wasteland.jpg)"></div>
+<div class="character-wrapper">
+    <div id="character"
+         class="character floating"
+         style="background: url(pics/character/main.png)">
+        <img id="eyes" class="eyes body-part" v-bind:src="getSprite('eyes', characterData.eyes)"/>
+        <img id="brows" class="brows body-part" v-bind:src="getSprite('brows', characterData.brows)"/>
+    </div>
+</div>
 <div id="app" class="wrapper">
     <div class="dialogue">
         <div class="bg"></div>
@@ -21,7 +30,8 @@
                     @click="choose(optionId)"
                     @mouseover="hover"
                     @mouseout="onOut"
-            >{{textOfId(optionId)}}</div>
+            >{{textOfId(optionId)}}
+            </div>
         </div>
     </div>
 </div>

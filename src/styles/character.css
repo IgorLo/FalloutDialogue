@@ -1,0 +1,49 @@
+.character-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+}
+
+.character {
+    user-select: none;
+    position: relative;
+    margin: auto;
+    width: 850px;
+    height: 850px;
+}
+
+.body-part {
+    user-select: none;
+    position: absolute;
+    border:0;
+    text-decoration:none;
+    outline:none
+}
+
+.eyes {
+    top: 170px;
+    left: 338px;
+    width: 175px;
+    height: 50px;
+}
+
+.brows {
+    top: 150px;
+    left: 338px;
+    width: 175px;
+    height: 50px;
+}
+
+.floating {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }
+}

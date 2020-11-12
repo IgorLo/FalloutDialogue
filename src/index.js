@@ -1,6 +1,7 @@
 import './styles/index.css'
+import './styles/character.css'
 import Vue from 'vue'
-
+import {getRandomSpriteIndex, getSprite} from "./characterParts";
 
 class Option{
     constructor(text, reply, options) {
@@ -9,6 +10,8 @@ class Option{
         this.reply = reply;
     }
 }
+
+// let eyes = require.context('../pics/character/eyes', true)
 
 let END_ID = 999999
 let START_ID = 0
@@ -27,6 +30,21 @@ let ALL_QUESTIONS = {
     6: new Option("<Промолчать>", 'Мда', [START_ID])
 }
 
+let character = new Vue({
+    el: '#character',
+    data: {
+        characterData: {
+            eyes: 1,
+            brows: 1
+        }
+    },
+    methods: {
+        getSprite: (part, index) => {
+            return getSprite(part, index)
+        }
+    }
+})
+
 let app = new Vue({
     el: '#app',
     data: {
@@ -36,6 +54,7 @@ let app = new Vue({
     // определяйте методы в объекте `methods`
     methods: {
         choose: (id) => {
+            randomizeCharacter();
             playSound("sound__ok");
             app.current_option = ALL_QUESTIONS[id]
             app.displayReply = true
@@ -55,6 +74,14 @@ let app = new Vue({
     }
 })
 
+function randomizeCharacter() {
+    character.characterData = {
+        eyes: getRandomSpriteIndex('eyes'),
+        brows: getRandomSpriteIndex('brows')
+    }
+}
+
+
 function playSound(soundName) {
     let sound = document.getElementById(soundName);
     sound.currentTime = 0;
@@ -65,4 +92,10 @@ function stopSound(soundName) {
     let sound = document.getElementById(soundName);
     sound.pause();
     sound.currentTime = 0;
+}
+
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
 }
