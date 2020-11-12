@@ -7,15 +7,15 @@
 <body>
 <audio id="sound__focus" src="sounds/ui_menu_focus.wav"></audio>
 <audio id="sound__ok" src="sounds/ui_menu_ok.wav"></audio>
+<audio id="sound__steps" src="sounds/steps.wav"></audio>
 <div id="main-bg" style="background-image: url(pics/wasteland.jpg)"></div>
-<div class="character-wrapper">
-    <div id="character"
-         class="character floating"
+<div id="character" class="character-wrapper" v-bind:class="{ hidden: !displayed }">
+    <div class="character floating"
          style="background: url(pics/character/main.png)">
-        <img id="eyes" class="eyes body-part" v-bind:src="getSprite('eyes', characterData.eyes)"/>
-        <img id="brows" class="brows body-part" v-bind:src="getSprite('brows', characterData.brows)"/>
-        <img id="nose" class="nose body-part" v-bind:src="getSprite('nose', characterData.nose)"/>
-        <img id="mouth" class="mouth body-part" v-bind:src="getSprite('mouth', characterData.mouth)"/>
+        <img id="eyes" class="eyes body-part" v-bind:src="getSprite('eyes', appearance.eyes)"/>
+        <img id="brows" class="brows body-part" v-bind:src="getSprite('brows', appearance.brows)"/>
+        <img id="nose" class="nose body-part" v-bind:src="getSprite('nose', appearance.nose)"/>
+        <img id="mouth" class="mouth body-part" v-bind:src="getSprite('mouth', appearance.mouth)"/>
     </div>
 </div>
 <div id="app" class="wrapper">

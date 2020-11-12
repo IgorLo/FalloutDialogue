@@ -14,9 +14,9 @@ export function getSprite(part, index){
 }
 
 export function getRandomSpriteIndex(part){
-    return getRandomInt(QUANTITY[part])
+    return randomInt(QUANTITY[part])
 }
 
-function getRandomInt(max) {
+export function randomInt(max) {
     return Math.floor(1 + Math.random() * max);
 }

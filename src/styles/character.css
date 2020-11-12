@@ -3,6 +3,8 @@
     bottom: 0;
     width: 100%;
     height: fit-content;
+    transition: all 2s ease-in-out;
+    opacity: 1.0;
 }
 
 .character {
@@ -11,6 +13,11 @@
     margin: auto;
     width: 850px;
     height: 850px;
+}
+
+.hidden {
+    transform: scale(0.5) translateY(+100px);
+    opacity: 0.0;
 }
 
 .body-part {
@@ -47,6 +54,10 @@
     left: 338px;
     width: 175px;
     height: 50px;
+}
+
+.hidden > .floating {
+    animation-duration: 0.5s;
 }
 
 .floating {
