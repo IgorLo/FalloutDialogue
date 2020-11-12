@@ -1,9 +1,9 @@
 const QUANTITY = {
     'eyes': 3,
     'brows': 3,
-    'noses': 0,
+    'nose': 3,
     'hair': 0,
-    'mouth': 0,
+    'mouth': 3,
     'cloth': 0
 }
 
@@ -18,5 +18,5 @@ export function getRandomSpriteIndex(part){
 }
 
 function getRandomInt(max) {
-    return Math.floor(1 + Math.random() * Math.floor(max));
+    return Math.floor(1 + Math.random() * max);
 }

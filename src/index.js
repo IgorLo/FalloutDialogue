@@ -35,7 +35,9 @@ let character = new Vue({
     data: {
         characterData: {
             eyes: 1,
-            brows: 1
+            brows: 1,
+            nose: 1,
+            mouth: 1
         }
     },
     methods: {
@@ -77,7 +79,9 @@ let app = new Vue({
 function randomizeCharacter() {
     character.characterData = {
         eyes: getRandomSpriteIndex('eyes'),
-        brows: getRandomSpriteIndex('brows')
+        brows: getRandomSpriteIndex('brows'),
+        nose: getRandomSpriteIndex('nose'),
+        mouth: getRandomSpriteIndex('mouth')
     }
 }
 

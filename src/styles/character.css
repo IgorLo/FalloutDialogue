@@ -35,6 +35,20 @@
     height: 50px;
 }
 
+.nose {
+    top: 185px;
+    left: 390px;
+    width: 70px;
+    height: 80px;
+}
+
+.mouth {
+    top: 260px;
+    left: 338px;
+    width: 175px;
+    height: 50px;
+}
+
 .floating {
     animation-name: floating;
     animation-duration: 3s;
