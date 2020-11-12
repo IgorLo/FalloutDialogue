@@ -80,7 +80,8 @@ function randomizeAppearance() {
         getRandomSpriteIndex('eyes'),
         getRandomSpriteIndex('brows'),
         getRandomSpriteIndex('nose'),
-        getRandomSpriteIndex('mouth')
+        getRandomSpriteIndex('mouth'),
+        getRandomSpriteIndex('cloth')
     )
 }
 

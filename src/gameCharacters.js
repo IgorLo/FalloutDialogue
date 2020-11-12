@@ -4,15 +4,16 @@ let END_ID = 999999
 let START_ID = 0
 
 export class Appearance {
-    constructor(eyes, brows, nose, mouth) {
+    constructor(eyes, brows, nose, mouth, cloth) {
         this.eyes = eyes;
         this.brows = brows;
         this.nose = nose;
         this.mouth = mouth;
+        this.cloth = cloth;
     }
 
     static default(){
-        return new Appearance(1, 1, 1, 1)
+        return new Appearance(1, 1, 1, 1, 1)
     }
 }
 

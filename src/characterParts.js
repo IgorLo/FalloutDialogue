@@ -4,7 +4,7 @@ const QUANTITY = {
     'nose': 3,
     'hair': 0,
     'mouth': 3,
-    'cloth': 0
+    'cloth': 5
 }
 
 const BASE_PATH = 'pics/'
