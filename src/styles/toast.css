@@ -1,0 +1,20 @@
+div > div.v-toast__item {
+    background: rgba(2, 22, 11, 0.5);
+    margin: 0;
+    border-radius: 0;
+    min-height: 2em;
+    border-width: 2px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #1bff80, #00000000 15%, #00000000 85%, #1bff80);
+}
+
+div.v-toast__item > p.v-toast__text {
+    z-index: 80;
+    user-select: none;
+    padding: 8px 32px;
+}
+
+div.v-toast__item > div.v-toast__icon {
+    display: none;
+}

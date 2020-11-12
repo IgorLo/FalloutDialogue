@@ -33,10 +33,11 @@ export class Character {
 }
 
 export class Option {
-    constructor(text, reply, options) {
+    constructor(text, reply, options, action) {
         this.text = text;
         this.options = options;
         this.reply = reply;
+        this.action = action;
     }
 
     static endId() {
@@ -71,7 +72,7 @@ characters.push(
             2: new Option("А это... эм... безопасно жить вокруг бомбы?", 'А ты самый умный?', [5, 6]),
             3: new Option("Хорошо, я зайду к нему. Спасибо за совет.", 'Без проблем, партнёр. Главное не дури и мы поладим.', [Option.endId()]),
             4: new Option("[СИЛА] Либо ты прямо сейчас говоришь всё, что ты знаешь, либо я ломаю тебе лицо.",
-                'Лучше не нарывайся, дружище. Я не хочу тратить на тебя патроны.', [Option.endId()]),
+                'Получай по роже, братишка.', [Option.endId()], {hp: -10}),
             5: new Option("[ИНТЕЛЛЕКТ] Впрочем, насколько я понимаю, она бы давно взорвалась, если бы могла", 'Именно.', [Option.endId()]),
             6: new Option("<Промолчать>", 'Мда', [Option.endId()])
         }

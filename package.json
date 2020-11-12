@@ -32,6 +32,7 @@
     "unique-names-generator": "^4.3.1",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
-    "vue-loader": "^15.9.5"
+    "vue-loader": "^15.9.5",
+    "vue-toast-notification": "^0.6.0"
   }
 }

@@ -12,8 +12,9 @@
 <div id="character" class="character-wrapper" v-bind:class="{ hidden: !displayed }">
     <div class="character floating"
          style="background: url(pics/character/main.png)">
+        <div class="name body-part">{{name}}</div>
         <img id="eyes" class="eyes body-part" v-bind:src="getSprite('eyes', appearance.eyes)"/>
-        <img id="brows" class="brows body-part" v-bind:src="getSprite('brows', appearance.brows)"/>
+        <img id="brows" class="brows body-part floating" v-bind:src="getSprite('brows', appearance.brows)"/>
         <img id="nose" class="nose body-part" v-bind:src="getSprite('nose', appearance.nose)"/>
         <img id="mouth" class="mouth body-part" v-bind:src="getSprite('mouth', appearance.mouth)"/>
     </div>
@@ -40,7 +41,8 @@
 <div id="stats" class="stats">
     <div class="stats__item">{{money}}$</div>
     <div class="stats__item">{{food}} банок</div>
-    <div class="stats__item">{{HP}} жизек</div>
+    <div class="stats__filler"></div>
+    <div class="stats__item">{{hp}} жизек</div>
     <div class="stats__item">{{ammo}} пуль</div>
 </div>
 <script src="main.js"></script>
