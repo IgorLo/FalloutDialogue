@@ -1,5 +1,6 @@
 import './styles/index.css'
 import './styles/character.css'
+import './styles/stats.css'
 import Vue from 'vue'
 import {getRandomSpriteIndex, getSprite} from "./characterParts";
 
@@ -74,6 +75,16 @@ let app = new Vue({
             return ALL_QUESTIONS[id].text
         }
     }
+})
+
+let statbar = new Vue({
+    el: '#stats',
+    data: {
+        money: 100,
+        food: 10,
+        HP: 10,
+        ammo: 30
+    },
 })
 
 function randomizeCharacter() {

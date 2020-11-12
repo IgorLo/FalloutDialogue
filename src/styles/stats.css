@@ -1,0 +1,26 @@
+.stats {
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    z-index: 80;
+}
+
+.stats__item {
+    z-index: 80;
+    user-select: none;
+    padding: 8px 32px;
+    background: rgba(4, 59, 30, 0.6);
+    border: 2px solid #1bff80;
+}
+
+@media (orientation: portrait) {
+    .stats {
+        top: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}

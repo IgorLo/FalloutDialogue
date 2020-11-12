@@ -61,3 +61,20 @@
     50%  { transform: translate(0, 15px); }
     100%   { transform: translate(0, -0px); }
 }
+
+@media (orientation: portrait) {
+
+    .character-wrapper {
+        transform: scale(1.5);
+        bottom: 10vh;
+    }
+
+    .character {
+        /*width: 1700px;*/
+        /*height: 1700px;*/
+    }
+
+    .body-part {
+        /*transform: scale(2.0);*/
+    }
+}
