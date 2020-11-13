@@ -75,17 +75,6 @@ let stats = new Vue({
     },
 })
 
-function randomizeAppearance() {
-    character.appearance = new Appearance(
-        getRandomSpriteIndex('eyes'),
-        getRandomSpriteIndex('brows'),
-        getRandomSpriteIndex('nose'),
-        getRandomSpriteIndex('mouth'),
-        getRandomSpriteIndex('cloth')
-    )
-}
-
-
 function playSound(soundName) {
     let sound = document.getElementById(soundName);
     sound.currentTime = 0;
@@ -109,7 +98,7 @@ function nextRandomStranger() {
         app.current_option = newStranger.dialogue[Option.startId()];
         app.current_character = newStranger;
         // character.appearance = newStranger.appearance;
-        randomizeAppearance();
+        character.appearance = Appearance.random();
         character.name = newStranger.name;
         character.displayed = true;
     }, 3000)

@@ -1,19 +1,33 @@
-import {randomInt} from "./characterParts";
+import {getRandomSpriteIndex, randomInt} from "./characterParts";
 
 let END_ID = 999999
 let START_ID = 0
 
 export class Appearance {
-    constructor(eyes, brows, nose, mouth, cloth) {
+    constructor(eyes, brows, nose, mouth, cloth, hair, hue) {
         this.eyes = eyes;
         this.brows = brows;
         this.nose = nose;
         this.mouth = mouth;
         this.cloth = cloth;
+        this.hair = hair;
+        this.hue = hue;
     }
 
     static default(){
-        return new Appearance(1, 1, 1, 1, 1)
+        return new Appearance(1, 1, 1, 1, 1, 1, 1)
+    }
+
+    static random(){
+        return new Appearance(
+            getRandomSpriteIndex('eyes'),
+            getRandomSpriteIndex('brows'),
+            getRandomSpriteIndex('nose'),
+            getRandomSpriteIndex('mouth'),
+            getRandomSpriteIndex('cloth'),
+            getRandomSpriteIndex('hair'),
+            randomInt(360)
+        )
     }
 }
 

@@ -71,6 +71,13 @@
     height: 560px;
 }
 
+.hair {
+    top: 0;
+    left: 250px;
+    width: 350px;
+    height: 400px;
+}
+
 .hidden > .floating {
     animation-duration: 0.5s;
 }

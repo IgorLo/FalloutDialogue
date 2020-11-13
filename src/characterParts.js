@@ -2,7 +2,7 @@ const QUANTITY = {
     'eyes': 3,
     'brows': 3,
     'nose': 3,
-    'hair': 0,
+    'hair': 5,
     'mouth': 3,
     'cloth': 5
 }
