@@ -1,10 +1,10 @@
-import {getRandomSpriteIndex, randomInt} from "./characterParts";
+import {getRandomSpriteIndex, randomInt} from "./bodyParts";
 
 let END_ID = 999999
 let START_ID = 0
 
 export class Appearance {
-    constructor(eyes, brows, nose, mouth, cloth, hair, hue) {
+    constructor(eyes, brows, nose, mouth, cloth, hair, hue, clothHue) {
         this.eyes = eyes;
         this.brows = brows;
         this.nose = nose;
@@ -12,10 +12,11 @@ export class Appearance {
         this.cloth = cloth;
         this.hair = hair;
         this.hue = hue;
+        this.clothHue = clothHue;
     }
 
     static default(){
-        return new Appearance(1, 1, 1, 1, 1, 1, 1)
+        return new Appearance(1, 1, 1, 1, 1, 1, 1, 1)
     }
 
     static random(){
@@ -26,6 +27,7 @@ export class Appearance {
             getRandomSpriteIndex('mouth'),
             getRandomSpriteIndex('cloth'),
             getRandomSpriteIndex('hair'),
+            randomInt(360),
             randomInt(360)
         )
     }
@@ -77,10 +79,10 @@ let characters = []
 characters.push(
     new Character(
         "Флексер",
-        new Appearance(1, 1, 1, 1),
+        Appearance.default(),
         {
             999999: new Option("Я бы хотел закончить этот разговор", "Я только за, умник", [Option.endId()]),
-            0: new Option('Я бы хотел спросить ещё кое-что', 'Спрашивай, партнёр.', [1, 2]),
+            0: new Option('Я бы хотел спросить ещё кое-что', 'Задавай любые вопросы.', [1, 2]),
             1: new Option("Я ищу своего отца. Он тоже из убежища. Не видели такого?",
                 'Лучше всего обратиться к Мориарти. Если твой отец и был здесь, он наверняка заходил в бар Мориарти',
                 [3, 4]),

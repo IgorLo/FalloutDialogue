@@ -20,7 +20,8 @@
              v-bind:style="{filter: 'hue-rotate(' + appearance.hue + 'deg)'}"/>
         <img id="nose" class="nose body-part" v-bind:src="getSprite('nose', appearance.nose)"/>
         <img id="mouth" class="mouth body-part" v-bind:src="getSprite('mouth', appearance.mouth)"/>
-        <img id="cloth" class="cloth body-part" v-bind:src="getSprite('cloth', appearance.cloth)"/>
+        <img id="cloth" class="cloth body-part" v-bind:src="getSprite('cloth', appearance.cloth)"
+             v-bind:style="{filter: 'hue-rotate(' + appearance.clothHue + 'deg)'}"/>
     </div>
 </div>
 <div id="app" class="wrapper">

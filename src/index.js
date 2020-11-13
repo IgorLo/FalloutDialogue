@@ -5,12 +5,11 @@ import './styles/stats.css'
 import './styles/toast.css'
 import Vue from 'vue'
 import VueToast from 'vue-toast-notification';
-import {getRandomSpriteIndex, getSprite} from "./characterParts";
-import {characters, Character, Appearance, Option, randomElement} from "./gameCharacters";
+import {getRandomSpriteIndex, getSprite} from "./bodyParts";
+import {characters, Character, Appearance, Option, randomElement} from "./characters";
 
 
 Vue.use(VueToast, {
-    containerClassName: "dialogue__option",
     position: 'top',
     duration: 2000
 })
@@ -46,11 +45,7 @@ let app = new Vue({
                 app.current_option = app.current_character.dialogue[id]
                 let action = app.current_option.action
                 handleAction(action);
-                app.displayReply = true
-                setTimeout(() => {
-                    app.displayReply = false;
-                // }, 1000 + ((app.current_option.reply.length / 50) * 1500))
-                }, 200 + ((app.current_option.reply.length / 50) * 500))
+                showReply();
             }
         },
         hover: () => {
@@ -75,6 +70,14 @@ let stats = new Vue({
     },
 })
 
+function showReply() {
+    app.displayReply = true
+    setTimeout(() => {
+        app.displayReply = false;
+        // }, 1000 + ((app.current_option.reply.length / 50) * 1500))
+    }, 200 + ((app.current_option.reply.length / 50) * 500))
+}
+
 function playSound(soundName) {
     let sound = document.getElementById(soundName);
     sound.currentTime = 0;
@@ -97,6 +100,7 @@ function nextRandomStranger() {
         playSound('sound__steps')
         app.current_option = newStranger.dialogue[Option.startId()];
         app.current_character = newStranger;
+        showReply();
         // character.appearance = newStranger.appearance;
         character.appearance = Appearance.random();
         character.name = newStranger.name;
