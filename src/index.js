@@ -55,7 +55,12 @@ let app = new Vue({
             stopSound("sound__focus");
         },
         textOfId: (id) => {
-            return app.current_character.dialogue[id].text
+            if (id === Option.endId()) {
+                return '[УЙТИ] ' + app.current_character.dialogue[id].text
+            } else {
+                return app.current_character.dialogue[id].text
+            }
+
         }
     }
 })
@@ -72,10 +77,22 @@ let stats = new Vue({
 
 function showReply() {
     app.displayReply = true
-    setTimeout(() => {
+    let speech = new SpeechSynthesisUtterance();
+    speech.lang = 'ru-RU';
+    speech.rate = 1.5;
+    speech.pitch = -2;
+    speech.volume = 1;
+    speech.text = app.current_option.reply;
+    // speech.text = 'Здарова братец';
+    speech.onend = () => {
         app.displayReply = false;
         // }, 1000 + ((app.current_option.reply.length / 50) * 1500))
-    }, 200 + ((app.current_option.reply.length / 50) * 500))
+    }
+    window.speechSynthesis.speak(speech);
+    // setTimeout(() => {
+    //     app.displayReply = false;
+    //     }, 1000 + ((app.current_option.reply.length / 50) * 1500))
+    // }, 200 + ((app.current_option.reply.length / 50) * 500))
 }
 
 function playSound(soundName) {
