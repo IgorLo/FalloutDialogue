@@ -11,7 +11,7 @@ import {characters, Character, Appearance, Option, randomElement} from "./charac
 
 Vue.use(VueToast, {
     position: 'top',
-    duration: 2000
+    duration: 4000
 })
 
 let character = new Vue({
@@ -154,6 +154,13 @@ function handleAction(action) {
         }
     }
 }
+
+document.body.addEventListener('click', () => {
+    window.speechSynthesis.cancel();
+    if (app.displayReply === true){
+        app.displayReply = false;
+    }
+}, true);
 
 
 nextRandomStranger()
