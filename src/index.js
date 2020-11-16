@@ -39,13 +39,21 @@ let app = new Vue({
     methods: {
         choose: (id) => {
             playSound("sound__ok");
-            if (id === Option.endId()) {
+            if (app.current_character.dialogue[id].isEnd) {
                 nextRandomStranger()
             } else {
+                let lastOption = app.current_option;
                 app.current_option = app.current_character.dialogue[id]
-                let action = app.current_option.action
-                handleAction(action);
-                showReply();
+                handleAction(app.current_option.action);
+                if (app.current_option.options.length === 0) {
+                    if (app.current_option.goTo !== undefined) {
+                        showReply(app.current_character.dialogue[app.current_option.goTo]);
+                    } else {
+                        showReply(lastOption);
+                    }
+                } else {
+                    showReply(app.current_option)
+                }
             }
         },
         hover: () => {
@@ -55,7 +63,7 @@ let app = new Vue({
             stopSound("sound__focus");
         },
         textOfId: (id) => {
-            if (id === Option.endId()) {
+            if (app.current_character.dialogue[id].isEnd) {
                 return '[УЙТИ] ' + app.current_character.dialogue[id].text
             } else {
                 return app.current_character.dialogue[id].text
@@ -75,7 +83,7 @@ let stats = new Vue({
     },
 })
 
-function showReply() {
+function showReply(option) {
     app.displayReply = true
     let speech = new SpeechSynthesisUtterance();
     speech.lang = 'ru-RU';
@@ -83,16 +91,11 @@ function showReply() {
     speech.pitch = -2;
     speech.volume = 1;
     speech.text = app.current_option.reply;
-    // speech.text = 'Здарова братец';
     speech.onend = () => {
+        app.current_option = option;
         app.displayReply = false;
-        // }, 1000 + ((app.current_option.reply.length / 50) * 1500))
     }
     window.speechSynthesis.speak(speech);
-    // setTimeout(() => {
-    //     app.displayReply = false;
-    //     }, 1000 + ((app.current_option.reply.length / 50) * 1500))
-    // }, 200 + ((app.current_option.reply.length / 50) * 500))
 }
 
 function playSound(soundName) {
@@ -117,7 +120,7 @@ function nextRandomStranger() {
         playSound('sound__steps')
         app.current_option = newStranger.dialogue[Option.startId()];
         app.current_character = newStranger;
-        showReply();
+        showReply(app.current_option);
         // character.appearance = newStranger.appearance;
         character.appearance = Appearance.random();
         character.name = newStranger.name;
@@ -157,7 +160,7 @@ function handleAction(action) {
 
 document.body.addEventListener('click', () => {
     window.speechSynthesis.cancel();
-    if (app.displayReply === true){
+    if (app.displayReply === true) {
         app.displayReply = false;
     }
 }, true);
