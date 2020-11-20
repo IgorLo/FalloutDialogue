@@ -1,5 +1,5 @@
 import {getRandomSpriteIndex, randomInt} from "./bodyParts";
-import {generateDialogue} from "./generation";
+import {generateDialogue, generateName} from "./generation";
 
 let START_ID = 0
 
@@ -95,36 +95,35 @@ export function randomElement(array) {
 
 let characters = []
 
-// characters.push(
-//     new Character(
-//         "Флексер",
-//         Appearance.default(),
-//         {
-//             999999: new Option("Я бы хотел закончить этот разговор", "Я только за, умник", true),
-//             0: new Option('Я бы хотел спросить ещё кое-что', 'Задавай любые вопросы.', false, [1, 2, 7]),
-//             1: new Option("Я ищу своего отца. Он тоже из убежища. Не видели такого?",
-//                 'Лучше всего обратиться к Мориарти. Если твой отец и был здесь, он наверняка заходил в бар Мориарти',
-//                 false, [3, 4]),
-//             2: new Option("А это... эм... безопасно жить вокруг бомбы?", 'А ты самый умный?', false, [5, 6]),
-//             3: new Option("Хорошо, я зайду к нему. Спасибо за совет.", 'Без проблем, партнёр. Главное не дури и мы поладим.', false, [999999]),
-//             4: new Option("[СИЛА] Либо ты прямо сейчас говоришь всё, что ты знаешь, либо я ломаю тебе лицо.",
-//                 'Получай по роже, братишка.', false, [999999], null, {hp: -1}),
-//             5: new Option("[ИНТЕЛЛЕКТ] Впрочем, насколько я понимаю, она бы давно взорвалась, если бы могла", 'Именно.', false, [999999]),
-//             6: new Option("<Промолчать>", 'Мда', false, [999999]),
-//             7: new Option("Как тебя зовут?", 'Не твоё дело')
-//         }
-//     )
-// );
-
-let dialogueMap = generateDialogue(new Personality(CHARACTER_TYPE.scientist, ATTITUDE.friend)).map;
-console.log(dialogueMap)
-
 characters.push(
     new Character(
         "Флексер",
         Appearance.default(),
-        dialogueMap
+        {
+            999999: new Option("Я бы хотел закончить этот разговор", "Я только за, умник", true),
+            0: new Option('Я бы хотел спросить ещё кое-что', 'Задавай любые вопросы.', false, [1, 2, 7]),
+            1: new Option("Я ищу своего отца. Он тоже из убежища. Не видели такого?",
+                'Лучше всего обратиться к Мориарти. Если твой отец и был здесь, он наверняка заходил в бар Мориарти',
+                false, [3, 4]),
+            2: new Option("А это... эм... безопасно жить вокруг бомбы?", 'А ты самый умный?', false, [5, 6]),
+            3: new Option("Хорошо, я зайду к нему. Спасибо за совет.", 'Без проблем, партнёр. Главное не дури и мы поладим.', false, [999999]),
+            4: new Option("[СИЛА] Либо ты прямо сейчас говоришь всё, что ты знаешь, либо я ломаю тебе лицо.",
+                'Получай по роже, братишка.', false, [999999], null, {hp: -1}),
+            5: new Option("[ИНТЕЛЛЕКТ] Впрочем, насколько я понимаю, она бы давно взорвалась, если бы могла", 'Именно.', false, [999999]),
+            6: new Option("<Промолчать>", 'Мда', false, [999999]),
+            7: new Option("Как тебя зовут?", 'Не твоё дело')
+        }
     )
 );
 
 export {characters}
+
+export function generateCharacter(dangerLevel){
+    let personality = new Personality(CHARACTER_TYPE.scientist, ATTITUDE.friend)
+
+    return new Character(
+        generateName(personality),
+        Appearance.random(),
+        generateDialogue(personality, dangerLevel).map
+    )
+}

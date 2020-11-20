@@ -6,7 +6,7 @@ import './styles/toast.css'
 import Vue from 'vue'
 import VueToast from 'vue-toast-notification';
 import {getRandomSpriteIndex, getSprite} from "./bodyParts";
-import {characters, Character, Appearance, Option, randomElement} from "./characters";
+import {characters, Character, Appearance, Option, randomElement, generateCharacter} from "./characters";
 
 
 Vue.use(VueToast, {
@@ -79,7 +79,9 @@ let stats = new Vue({
         money: 100,
         food: 10,
         hp: 10,
-        ammo: 30
+        ammo: 30,
+        dangerLevel: 1,
+        enemyNumber: 1
     },
 })
 
@@ -114,7 +116,13 @@ function nextRandomStranger() {
     playSound('sound__steps')
     character.displayed = false;
     app.current_option = Option.emptyOption();
-    let newStranger = randomElement(characters);
+    // let newStranger = randomElement(characters);
+    let newStranger = generateCharacter(stats.dangerLevel);
+    stats.dangerLevel += 1;
+    stats.enemyNumber += 1;
+    if (stats.enemyNumber % 10 === 0){
+        stats.dangerLevel += 10;
+    }
 
     setTimeout(() => {
         playSound('sound__steps')
@@ -122,10 +130,10 @@ function nextRandomStranger() {
         app.current_character = newStranger;
         showReply(app.current_option);
         // character.appearance = newStranger.appearance;
-        character.appearance = Appearance.random();
+        character.appearance = newStranger.appearance;
         character.name = newStranger.name;
         character.displayed = true;
-    }, 3000)
+    }, 2000)
 }
 
 function notification(item, value) {
