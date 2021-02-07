@@ -4,7 +4,8 @@ import {generateDialogue, generateName} from "./generation";
 let START_ID = 0
 
 export class Appearance {
-    constructor(eyes, brows, nose, mouth, cloth, hair, hue, clothHue) {
+    constructor(body, eyes, brows, nose, mouth, cloth, hair, hue, clothHue) {
+        this.body = body;
         this.eyes = eyes;
         this.brows = brows;
         this.nose = nose;
@@ -16,11 +17,12 @@ export class Appearance {
     }
 
     static default() {
-        return new Appearance(1, 1, 1, 1, 1, 1, 1, 1)
+        return new Appearance(1, 1, 1, 1, 1, 1, 1, 1, 1)
     }
 
     static random() {
         return new Appearance(
+            getRandomSpriteIndex('body'),
             getRandomSpriteIndex('eyes'),
             getRandomSpriteIndex('brows'),
             getRandomSpriteIndex('nose'),

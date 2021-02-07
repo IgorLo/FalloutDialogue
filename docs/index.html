@@ -11,7 +11,7 @@
 <div id="main-bg" style="background-image: url(pics/wasteland.jpg)"></div>
 <div id="character" class="character-wrapper" v-bind:class="{ hidden: !displayed }">
     <div class="character floating"
-         style="background: url(pics/character/main.png)">
+         v-bind:style='{background: "url(" + getSprite("body", appearance.body) + ")"}'>
         <div class="name body-part">{{name}}</div>
         <img id="eyes" class="eyes body-part" v-bind:src="getSprite('eyes', appearance.eyes)"/>
         <img id="hair" class="hair body-part" v-bind:src="getSprite('hair', appearance.hair)"

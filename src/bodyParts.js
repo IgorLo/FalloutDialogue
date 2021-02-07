@@ -1,10 +1,11 @@
 const QUANTITY = {
-    'eyes': 3,
-    'brows': 3,
-    'nose': 3,
-    'hair': 5,
-    'mouth': 3,
-    'cloth': 5
+    'eyes': 9,
+    'brows': 7,
+    'nose': 8,
+    'hair': 8,
+    'mouth': 11,
+    'cloth': 9,
+    'body': 4
 }
 
 const BASE_PATH = 'pics/'

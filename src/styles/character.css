@@ -40,14 +40,14 @@
     top: 170px;
     left: 338px;
     width: 175px;
-    height: 50px;
+    height: 55px;
 }
 
 .brows {
-    top: 140px;
-    left: 338px;
-    width: 175px;
-    height: 50px;
+    top: 146px;
+    left: 333px;
+    width: 180px;
+    height: 56px;
 }
 
 .nose {
@@ -58,24 +58,24 @@
 }
 
 .mouth {
-    top: 260px;
+    top: 201px;
     left: 338px;
     width: 175px;
-    height: 50px;
+    height: 164px;
 }
 
 .cloth {
     bottom: 0;
     left: 130px;
     width: 590px;
-    height: 560px;
+    height: 630px;
 }
 
 .hair {
     top: 0;
-    left: 250px;
-    width: 350px;
-    height: 400px;
+    left: 255px;
+    width: 340px;
+    height: 425px;
 }
 
 .hidden > .floating {
